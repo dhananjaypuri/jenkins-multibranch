@@ -28,6 +28,13 @@ pipeline{
         stage("Publish Image"){
             steps {
                 echo "Publishing image"
+                sh '''
+                if echo ${DOCKER_CREDS} | docker login -u ${DOCKER_UNAME} --password-stdin
+                then
+                    echo "Login succeded"
+                else
+                    echo "Login failed"
+                '''
             }
 
         }
