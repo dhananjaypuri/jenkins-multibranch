@@ -6,9 +6,16 @@ pipeline{
     }
     stages{
         stage("Build"){
+            environment {
+                NEW_IMG_NAME = "${params.IMG_NAME}_${params.BUILD_ENVV}"
+                DOCKER_UNAME = "dhananjaypuri"
+                DOCKER_CREDS = credentials('docker_secret_pass')
+            }
             steps{
                 echo "========Building Python Image========"
-                echo "${params.IMG_NAME}"
+                sh '''
+                docker build -t ${DOCKER_UNAME}/${NEW_IMG_NAME} .
+                '''
 
             }
 
