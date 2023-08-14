@@ -29,9 +29,10 @@ pipeline{
             steps {
                 echo "Publishing image"
                 sh '''
-                if echo ${DOCKER_CREDS} | docker login -u ${DOCKER_UNAME} --password-stdinn > /dev/null
+                if echo ${DOCKER_CREDS} | docker login -u ${DOCKER_UNAME} --password-stdin
                 then
                     echo "Login succeded"
+                    docker image push ${DOCKER_UNAME}/${NEW_IMG_NAME}
                 else
                     echo "Login failed"
                 fi
