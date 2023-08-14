@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        string(name: 'IMG_NAME', defaultVaule: 'abc')
+        string(name: 'IMG_NAME', defaultValue: 'abc')
         choice(name: 'BUILD_ENVV', choices: ['master', 'dev'], description: "This is build env")
     }
     stages{
