@@ -34,6 +34,7 @@ pipeline{
                     echo "Login succeded"
                 else
                     echo "Login failed"
+                fi
                 '''
             }
 
