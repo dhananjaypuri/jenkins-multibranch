@@ -1,15 +1,26 @@
 pipeline{
     agent any
+    parameters {
+        string(name: 'IMG_NAME', defaultVaule: 'abc')
+        choice(name: 'BUILD_ENVV', choices: ['master', 'dev'], description: "This is build env")
+    }
     stages{
         stage("Build"){
             steps{
                 echo "========Building========"
+
             }
 
         }
 
         stage("Deploy"){
+            when {
+                experssion {
+                    params.BUILD_ENVV == 'master'
+                }
+            }
             steps{
+
                 echo "========Deploying========"
             }
 
