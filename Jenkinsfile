@@ -1,13 +1,14 @@
 pipeline{
     agent any
     parameters {
-        string(name: 'IMG_NAME', defaultValue: 'abc')
-        choice(name: 'BUILD_ENVV', choices: ['master', 'dev'], description: "This is build env")
+        string(name: 'IMG_NAME', defaultValue: 'abc_flask')
+        choice(name: 'BUILD_ENVV', choices: ['master', 'dev', 'stag'], description: "This is build env")
     }
     stages{
         stage("Build"){
             steps{
-                echo "========Building========"
+                echo "========Building Python Image========"
+                echo "${params.IMG_NAME}"
 
             }
 

@@ -1,7 +1,9 @@
-FROM tomcat:9
+FROM python:3.9-slim
 
-COPY target/hello-world-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/app.war
+WORKDIR /app
 
-EXPOSE 8080
+COPY . /app/
 
-CMD ["catalina.sh", "run"]
+RUN pip install -r requirements.txt
+
+CMD python app.py
