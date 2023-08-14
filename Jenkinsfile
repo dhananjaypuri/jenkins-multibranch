@@ -14,11 +14,13 @@ pipeline{
         }
 
         stage("Deploy"){
+
             when {
-                experssion {
+                expression {
                     params.BUILD_ENVV == 'master'
                 }
             }
+
             steps{
 
                 echo "========Deploying========"
